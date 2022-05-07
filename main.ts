@@ -1,10 +1,10 @@
-impoimport {
+import {
     Application,
     Context,
     Router,
 } from "https://deno.land/x/oak@v10.2.0/mod.ts";
 
-const app = new Application();
+const app    = new Application();
 const router = new Router();
 
 router.get("/", (ctx: Context) => {
@@ -13,18 +13,19 @@ router.get("/", (ctx: Context) => {
     if (!agent)
         return;
 
-    const split = agent.split(/[\s+|\/]/g)
+    const split = agent.split(/[\s+|\/]/g);
 
-    if (split.includes("Firefox")) ctx.response.body =
-        "Ooh you use firefox, or atleast appear to, \
-(smh to those who changed their user-agent), anyway you deserve a cookie"
-    else ctx.response.body =
-        "Please for all purposes and reasons, switch to Firefox for your \
+    if (split.includes("Firefox"))
+        ctx.response.body = "Ooh you use firefox, or atleast appear to, \
+(smh to those who changed their user-agent), anyway you deserve a cookie";
+    else
+        ctx.response.body =
+            "Please for all purposes and reasons, switch to Firefox for your \
 daily usage. As you are not currently using Firefox, we cannot serve you \
-this page, for this server only serves OSS consumers"
+this page, for this server only serves OSS consumers";
 
     ctx.response.headers.set("Refresh",
-                             "4;https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+                             "4;https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 })
 
 app.addEventListener(
