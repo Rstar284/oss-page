@@ -13,14 +13,11 @@ router.get("/", (ctx: Context) => {
     if (!agent)
         return;
 
-    const split = agent.split(/[\s+|\/]/g);
-
-    if (split.includes("Firefox"))
-        ctx.response.body = "Ooh you use firefox, or atleast appear to, \
-(smh to those who changed their user-agent), anyway you deserve a cookie";
-    else
-        ctx.response.body =
-            "Please for all purposes and reasons, switch to Firefox for your \
+    ctx.response.body =
+        agent.split(/[\s+|\/]/g).includes("Firefox")
+            ? "Ooh you use firefox, or atleast appear to, \
+(smh to those who changed their user-agent), anyway you deserve a cookie"
+            : "Please for all purposes and reasons, switch to Firefox for your \
 daily usage. As you are not currently using Firefox, we cannot serve you \
 this page, for this server only serves OSS consumers";
 
